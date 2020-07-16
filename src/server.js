@@ -1,8 +1,14 @@
-var express = require('express'); //import express 
-var firebase = require(`firebase`);
-const firebaseConfig = require('./firebaseConfig')
-var bodyParser = require('body-parser');
-const routes = require('./routes')
+const dotenv = require('dotenv');
+dotenv.config({ path: __dirname+'\\..\\.env' });
+
+const express = require('express'); 
+const firebase = require(`firebase`);
+const firebaseConfig = require('./firebaseConfig');
+const bodyParser = require('body-parser');
+const routes = require('./routes');
+
+
+console.log(process.env);
 
 var app = express();
 app.use(bodyParser.json());

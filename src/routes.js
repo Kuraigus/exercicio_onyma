@@ -49,7 +49,7 @@ routes.post('/appointments', function (req, res) {
 
 	var referencePath = '/appointments/';
 	var userReference = firebase.database().ref(referencePath);
-	userReference.push({ Address: address, PatientName: patientName, DateTime: dateTime, State:state }, 
+	userReference.push({ address, patientName, dateTime, state }, 
 				 function(error) {
 					if (error) {
 						res.send("Data could not be saved." + error);
@@ -60,16 +60,24 @@ routes.post('/appointments', function (req, res) {
 			});
 });
 
-//TODO funcao para atualizar um estado especifico 
+//funcao para atualizar um estado de um appointment especifico 
 routes.post('/appointments/state', function(req, res){
     console.log("HTTP Post Request");
-    userReference = firebase.database().ref('appointments');
+    userReference = firebase.database().ref('/appointments');
 
-    const { id, State } = req.body;
+    const { id, state } = req.body;
     console.log(req.body);
 
-    userReference.child('appointment').child(id).update({ 'State': state })
+    userReference.child(id).update({ state },
+        function(error) {
+            if(error){
+                res.send("Data Coult not be updated." + error);
+            }
+            else {
+                res.send("Data updated successfully.");
+            }
 
+        });
 });
 
 //funcao para deletar algum appointment especifico
