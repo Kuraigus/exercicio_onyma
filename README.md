@@ -6,9 +6,9 @@ hosting gratuito utilizando heroku-cli
 
 # Maior dificuldade no desenvolvimento
 
-Maior dificuldade em entender funcoes e possibilidades para fazer a utilizacao correta do banco de dados
+Maior dificuldade em entender funcoes e possibilidades para fazer a utilizacao correta do banco de dados,
 depois que o momento de aprendizado do banco de dados foi realizado, os metodos foram completadas mais
-completamente
+facilmente
 
 # O que nao consegui realizar
 
