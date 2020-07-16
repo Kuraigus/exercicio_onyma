@@ -83,11 +83,11 @@ module.exports = {
     
         //funcao para salvar o dado(automaticamente gerando um id)
         userReference.push({ address, patientName, dateTime, state })
-            .then(function () {  //caso a funcao de salvar o dado funcione normalmente, ele manda uma resposta de sucesso
-                res.status(201).send("Data saved successfully.");
+            .then(function (snapshot) {  //caso a funcao de salvar o dado funcione normalmente, ele manda uma resposta de sucesso
+                res.status(201).json({ [snapshot.key]: req.body  });
             })
             .catch(function (error) { //caso a funcao de salvar um dado de algum erro, ele mandara uma mensagem de erro mais o motivo
-                res.status(400).send("Data could not be saved." + error);
+                res.status(400).send("New appointment could not be created." + error);
             });
     },
 
