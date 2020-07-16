@@ -12,7 +12,6 @@ facilmente
 
 # O que nao consegui realizar
 
-- Adicionar outras rotas que julgar interessante para a aplicação
 - Pensar em como criar uma forma de autenticação para acesso aos dados
 - Como criptografar os dados do endereço do paciente, por exemplo
 
