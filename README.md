@@ -1,7 +1,8 @@
 # Tecnologias usadas
 
 API feita em node.js utilizando um banco de dados nao relacionavel firebase, modulos utilizados 
-para a facilitacao de criar uma API RESTful, eles sendo: express, nodemon, dotenv e bodyparser
+para a facilitacao de criar uma API RESTful, eles sendo: express, nodemon, dotenv e bodyparser.
+hosting gratuito utilizando heroku-cli
 
 # Maior dificuldade no desenvolvimento
 
@@ -11,7 +12,9 @@ completamente
 
 # O que nao consegui realizar
 
-TODO
+- Adicionar outras rotas que julgar interessante para a aplicação
+- Pensar em como criar uma forma de autenticação para acesso aos dados
+- Como criptografar os dados do endereço do paciente, por exemplo
 
 # Material de apoio
 

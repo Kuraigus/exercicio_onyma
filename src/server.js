@@ -30,6 +30,5 @@ const port = process.env.PORT || 3333;
 //inicializa o servidor na porta 3333 e manda uma mensagem mostrando o link para
 //se comunicar com o servidor
 var server = app.listen(port, function () {
-
   console.log("server listening at http://localhost:%s", port);
 });
