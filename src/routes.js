@@ -7,7 +7,7 @@ const firebase = require('firebase');
 const { query } = require('express');
 
 
-//funcao para mostrar todos os appointments
+//Rota para mostrar todos os appointments
 routes.get('/appointments', (req, res) => {
     console.log("HTTP Get Request");
 
@@ -25,7 +25,7 @@ routes.get('/appointments', (req, res) => {
         });
 });
 
-//Funcao para achar um appointment especifico
+//Rota para achar um appointment especifico
 routes.get('/appointments/:id', (req, res) => {
     console.log("HTTP Get Request");
 
@@ -51,7 +51,24 @@ routes.get('/appointments/:id', (req, res) => {
         });
 });
 
-//funcao para criar um novo appointment e editar algum state especifico
+//Rota para retornar appointments com algum estado especifico
+routes.get('/appointments/state/:estado', (req,res) => {
+    console.log("HTTP Get Request");
+
+    //guarda a referencia do firebase na var userReference
+    var userReference = firebase.database().ref("/appointments");
+
+    //guarda o estado requisitado pelo link
+    var specificState = req.params.estado;
+
+    //ordeno pelo child "state" procurando o estado especificado, retornando o que foi encontrado(possivel null)
+    userReference.orderByChild("state").equalTo(specificState).on("value",
+        snapshot => {
+            res.json(snapshot.val());
+    });
+});
+
+//Rota para criar um novo appointment e editar algum state especifico
 routes.post('/appointments', (req, res) => {
 
     console.log("HTTP Post Request");
@@ -73,7 +90,7 @@ routes.post('/appointments', (req, res) => {
         });
 });
 
-//funcao para atualizar um estado de um appointment especifico 
+//Rota para atualizar um estado de um appointment especifico 
 routes.post('/appointments/state', (req, res) => {
     console.log("HTTP Post Request");
 
@@ -100,7 +117,7 @@ routes.post('/appointments/state', (req, res) => {
         });
 });
 
-//funcao para deletar algum appointment especifico
+//Rota para deletar algum appointment especifico
 routes.delete('/appointments/:id', (req, res) => {
     console.log("HTTP DELETE Request");
 
