@@ -9,7 +9,7 @@ dotenv.config({ path: __dirname+'\\..\\.env' });
 //criar rotas para o express
 const express = require('express'); 
 const firebase = require(`firebase`);
-const firebaseConfig = require('./firebaseConfig');
+const firebaseConfig = require('./config/firebaseConfig');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 
