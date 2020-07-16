@@ -25,12 +25,11 @@ firebase.initializeApp(firebaseConfig);
 //usa todas as funcoes criadas no arquivo routes.js
 app.use(routes);
 
+
+const port = process.env.PORT || 3333;
 //inicializa o servidor na porta 3333 e manda uma mensagem mostrando o link para
 //se comunicar com o servidor
-var server = app.listen(3333, function () {
-
-  var host = server.address().address;
-  var port = server.address().port;
+var server = app.listen(port, function () {
 
   console.log("server listening at http://localhost:%s", port);
 });
