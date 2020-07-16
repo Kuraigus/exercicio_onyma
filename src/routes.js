@@ -1,4 +1,4 @@
-//modulo express para deixar a API RESTFUL, routes recebendo o express.router
+//modulo express para deixar a API RESTful, routes recebendo o express.router
 //para enviar como get, push, put e delete, firebase para funcoes utilizadas
 //para conversar com o banco de dados
 const express = require('express');
