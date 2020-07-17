@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 const routes = require('./routes');
 
 //variavel para usar o express.
-var app = express();
+const app = express();
 
 //funcao para ser possivel receber formato json como body
 app.use(bodyParser.json());
@@ -29,6 +29,6 @@ app.use(routes);
 const port = process.env.PORT || 3333;
 //inicializa o servidor na porta 3333 e manda uma mensagem mostrando o link para
 //se comunicar com o servidor
-var server = app.listen(port, function () {
+const server = app.listen(port, function () {
   console.log("server listening at http://localhost:%s", port);
 });

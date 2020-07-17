@@ -12,8 +12,8 @@ module.exports = {
         //mostra todos os valores de chaves encontradas
         userReference.once("value")
             .then(function (snapshot) {
-                res.json(snapshot.val()); //manda como resposta os valores
                 userReference.off("value");
+                res.json(snapshot.val()); //manda como resposta os valores
             })
             .catch(function (error) { //caso a funcao de mostrar os appointments nao funcione, enviara uma mensagem de error como resposta
                 res.status(500).send('Internal Server Error.');
@@ -35,8 +35,8 @@ module.exports = {
         userReference.orderByKey().equalTo(specificAppointment).once("value")
             .then(function (snapshot) {
                 if (snapshot.exists()) { //verifica se o snapshot encontrou o appointment especificado no parametro, caso encontrou, ele mostra seus valores
-                    res.json(snapshot.val()); //manda como resposta os valores do id encontrado
                     userReference.off("value");
+                    res.json(snapshot.val()); //manda como resposta os valores do id encontrado
                 }
                 else { //caso nao enctonre o appointmente especificado no parametro, mandara uma mensagem de error
                     res.status(404).send("ID not found.")
@@ -61,6 +61,7 @@ module.exports = {
         userReference.orderByChild("state").equalTo(specificState).on("value",
             snapshot => {
                 if (snapshot.val() == null) {
+                    userReference.off("value");
                     res.send([]);
                 }
                 else {
@@ -84,6 +85,7 @@ module.exports = {
         //funcao para salvar o dado(automaticamente gerando um id)
         userReference.push({ address, patientName, dateTime, state })
             .then(function (snapshot) {  //caso a funcao de salvar o dado funcione normalmente, ele manda uma resposta de sucesso
+                userReference.off("value");
                 res.status(201).json({ [snapshot.key]: req.body  });
             })
             .catch(function (error) { //caso a funcao de salvar um dado de algum erro, ele mandara uma mensagem de erro mais o motivo
@@ -107,6 +109,7 @@ module.exports = {
             .then(function (snapshot) {
                 if (snapshot.exists()) { //verifica se o snapshot encontrou o id, caso encontrou, ele realiza o update
                     snapshot.ref.child(id).update({ state });
+                    userReference.off("value");
                     res.send("Data updated Succesfully."); //caso a funcao de atualizar um estado funcione normalmente, ele manda uma resposta de sucesso
                 }
                 else { //caso o snapshot nao encontre o id, envia um erro 404
@@ -135,6 +138,7 @@ module.exports = {
                 if (snapshot.exists()) { //verifica se o snapshot encontrou o specificAppointment, caso encontrou, ele realiza o remove
                     snapshot.ref.child(specificAppointment).remove();
                     res.send("Data removed Succesfully."); //caso a funcao de atualizar um estado funcione normalmente, ele manda uma resposta de sucesso
+                    userReference.off("value");
                 }
                 else { //caso o snapshot nao encontre o specificAppointment, envia um erro 404
                     res.status(404).send("ID not found, data could not be removed.");
