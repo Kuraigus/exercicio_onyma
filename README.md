@@ -1,3 +1,7 @@
+# WARNING
+
+## Projeto realizado no OS Windows 10, nao testado de forma correta em outros OS
+
 # Onyma Project
 
 Exercicio desenvolvido pela onyma com objetivo de praticar nodejs com firebase
