@@ -79,8 +79,7 @@ module.exports = {
         const { address, patientName, dateTime, state } = req.body;
     
         //Essas variaveis criam a referencia do firebase
-        var referencePath = '/appointments/';
-        var userReference = firebase.database().ref(referencePath);
+        var userReference = firebase.database().ref("/appointments");
     
         //funcao para salvar o dado(automaticamente gerando um id)
         userReference.push({ address, patientName, dateTime, state })
